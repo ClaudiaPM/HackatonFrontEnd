@@ -106,9 +106,9 @@ export default function Example() {
                                     required
                                 >
                                     <option value="0">-- Seleccione --</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="femenino">Femenino</option>
-                                    <option value="otros">Otros</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="2">Femenino</option>
+                                    <option value="3">Otros</option>
                                 </select>
                             </div>
                         </div>
@@ -126,6 +126,7 @@ export default function Example() {
                                 id="departamento"
                                 required
                             >
+                                {/* AQUI SE CARGAN TODOS LOS DEPARTAMENTOS */}
                                 <option value="0">-- Seleccione --</option>
                             </select>
                         </div>
@@ -140,6 +141,7 @@ export default function Example() {
                                 id="municipio"
                                 required
                             >
+                                {/* AQUI SE CARGAN LOS MUNICIPIOS SEGUN EL ID DEL DEPARTAMENTO */}
                                 <option value="0">-- Seleccione --</option>
                             </select>
                             </div>
@@ -278,5 +280,24 @@ export default function Example() {
         </div>
       </>
     )
+
+    function register(){
+        const data = {
+            nombre,
+            apellidos,
+            email,
+            edad,
+            genero,
+            departamento,
+            municipio,
+            comunidad,
+            telefono,
+            tiposangre,
+            nombreencargado,
+            parentezco,
+            telefonoencargado,
+            padecimientos
+        }
+    }
   }
   
