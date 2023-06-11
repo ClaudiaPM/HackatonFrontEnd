@@ -1,22 +1,82 @@
 import Layout from "../layout/Layout"
+import Link from "next/link"
 
 export default function Listapacientes() {
     return(
         <Layout pagina='Listado Pacientes'>
-            <div className="bg-white flex justify-between p-8 items-center">
+            <div className="bg-white sm:p-2 p-8">
                 <h2 className="text-2xl font-bold">Listado de Pacientes</h2>
-                <div>
-                    <form>   
-                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
-                            <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
-                            <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-                        </div>
-                    </form>
+                
+                {/* Tabla de Pacientes */}
+                
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+                    <table className="w-full text-sm text-left text-gray-500 ">
+                        <thead className="text-xs bg-slate-100 text-sky-700 uppercase text-center ">
+                            <tr>
+                                <th scope="col" className="px-6 py-3 text-left">
+                                    Nombre
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left">
+                                    Apellido
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Edad
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Ultima Consulta
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Opcion
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="bg-white border-b text-gray-700 text-center">
+                                <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-left">
+                                    Juan Carlos
+                                </th>
+                                <td className="px-6 py-4 text-left">
+                                    Rodríguez López
+                                </td>
+                                <td className="px-6 py-4">
+                                    33
+                                </td>
+                                <td className="px-6 py-4">
+                                    29 marzo 2023
+                                </td>
+                                <td className="px-6 py-4 ">
+                                    <Link legacyBehavior href='/perfilpaciente'>
+                                        <a className="font-medium text-blue-600 lihover:underline">
+                                            Ver Paciente
+                                        </a>
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr className="bg-white border-b text-gray-700 text-center">
+                                <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-left">
+                                    Laura Valentina
+                                </th>
+                                <td className="px-6 py-4 text-left">
+                                    González Sánchez
+                                </td>
+                                <td className="px-6 py-4">
+                                    31
+                                </td>
+                                <td className="px-6 py-4">
+                                    10 febrero 2023
+                                </td>
+                                <td className="px-6 py-4">
+                                    <Link legacyBehavior href='/perfilpaciente'>
+                                        <a className="font-medium text-blue-600 lihover:underline">
+                                            Ver Paciente
+                                        </a>
+                                    </Link>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </Layout>
     )

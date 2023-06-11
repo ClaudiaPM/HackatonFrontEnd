@@ -11,7 +11,7 @@
 }
 
 .estrechar{
-  width: min( 60rem, 100% );
+  width: max(60rem, 100% );
   display: flex;
   flex-direction: column;
   align-items: center;

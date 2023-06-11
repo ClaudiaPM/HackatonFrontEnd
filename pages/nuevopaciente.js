@@ -8,12 +8,12 @@ export default function Nuevopaciente() {
             <div className="flex min-h-full flex-1 flex-col justify-center lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
                     <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-black">
-                        Regístro de Nuevo Pacientes
+                        Regístro de Nuevos Pacientes
                     </h2>
                 </div>
             <div className="bg-white md:p-8 rounded-lg mt-5">
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-dm">
-                    <form className="space-y-6" action="#" method="POST">
+                <form className="space-y-4" action="#" method="POST">
                     <div className="flex gap-2">
                         <div className="w-full">
                             <label htmlFor="nombre" className="block text-base font-medium leading-6 text-black">
@@ -68,23 +68,6 @@ export default function Nuevopaciente() {
 
                     <div className="flex gap-2">
                         <div className="w-full">
-                            <label htmlFor="sexo" className="block text-base font-medium leading-6 text-black">
-                            Sexo
-                            </label>
-                            <div className="mt-2">
-                                <select 
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
-                                    id="sexo"
-                                    required
-                                >
-                                    <option value="0">-- Seleccione --</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="femenino">Femenino</option>
-                                    <option value="otros">Otros</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="w-full">
                             <label htmlFor="edad" className="block text-base font-medium leading-6 text-black">
                             Edad
                             </label>
@@ -100,52 +83,53 @@ export default function Nuevopaciente() {
                             />
                             </div>
                         </div>
+                        <div className="w-full">
+                            <label htmlFor="genero" className="block text-base font-medium leading-6 text-black">
+                            Genero
+                            </label>
+                            <div className="mt-2">
+                                <select 
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
+                                    id="genero"
+                                    required
+                                >
+                                    <option value="0">-- Seleccione --</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex gap-2">
                     <div className="w-full">
-                            <label htmlFor="telefono" className="block text-base font-medium leading-6 text-black">
-                            Telefono
-                            </label>
-                            <div className="mt-2">
-                            <input
-                                id="telefono"
-                                name="telefono"
-                                type="number"
-                                autoComplete="telefono"
+                        <label htmlFor="departamento" className="block text-base font-medium leading-6 text-black">
+                        Departamento
+                        </label>
+                        <div className="mt-2">
+                            
+                            <select 
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
+                                id="departamento"
                                 required
-                                placeholder="Escriba su Telefono"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                            </div>
+                            >
+                                <option value="0">-- Seleccione --</option>
+                            </select>
+                        </div>
                         </div>
                         <div className="w-full">
-                            <label htmlFor="departamento" className="block text-base font-medium leading-6 text-black">
-                            Departamento
+                            <label htmlFor="municipio" className="block text-base font-medium leading-6 text-black">
+                            Municipio
                             </label>
                             <div className="mt-2">
-                                
-                                <select 
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
-                                    id="departamento"
-                                    required
-                                >
-                                    <option value="0">-- Seleccione --</option>
-                                    <option value="ahuachapan">Ahuachapán</option>
-                                    <option value="santaana">Santa Ana</option>
-                                    <option value="sonsonate">Sonsonate</option>
-                                    <option value="lalibertad">La Libertad</option>
-                                    <option value="chalatenango">Chalatenango</option>
-                                    <option value="cuscatlan">Cuscatlán</option>
-                                    <option value="sansalvador">San Salvador</option>
-                                    <option value="lapaz">La Paz</option>
-                                    <option value="cabañas">Cabañas</option>
-                                    <option value="sanvicente">San Vicente</option>
-                                    <option value="usulutan">Usulután</option>
-                                    <option value="sanmiguel">San Miguel</option>
-                                    <option value="morazan">Morazán</option>
-                                    <option value="launion">La Unión</option>
-                                </select>
+                            <select 
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
+                                id="municipio"
+                                required
+                            >
+                                <option value="0">-- Seleccione --</option>
+                            </select>
                             </div>
                         </div>
                     </div>
@@ -165,44 +149,106 @@ export default function Nuevopaciente() {
                         />
                         </div>
                     </div>
-        
-                    <div>
-                        <div>
-                        <label htmlFor="password" className="block text-base font-medium leading-6 text-black">
-                            Contraseña
-                        </label>
+
+                    <div className="flex gap-2">
+                        <div className="w-full">
+                            <label htmlFor="telefono" className="block text-base font-medium leading-6 text-black">
+                            Telefono
+                            </label>
+                            <div className="mt-2">
+                            <input
+                                id="telefono"
+                                name="telefono"
+                                type="number"
+                                autoComplete="telefono"
+                                required
+                                placeholder="Escriba su Telefono"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                            </div>
                         </div>
+                        <div className="w-full">
+                            <label htmlFor="tiposangre" className="block text-base font-medium leading-6 text-black">
+                            Tipo de Sangre
+                            </label>
+                            <div className="mt-2">
+                            <select 
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
+                                id="tiposangre"
+                                required
+                            >
+                                <option value="0">-- Seleccione --</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label htmlFor="nombreencargado" className="block text-base font-medium leading-6 text-black">
+                        Nombre Encargado
+                        </label>
                         <div className="mt-2">
                         <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
+                            id="nombreencargado"
+                            name="nombreencargado"
+                            type="text"
                             required
-                            placeholder="Escribe tu Contraseña"
+                            placeholder="Escriba nombre completo encargado"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                         </div>
                     </div>
-                    <div>
-                        <div>
-                        <label htmlFor="confirmacion" className="block text-base font-medium leading-6 text-black">
-                            Confirme Contraseña
-                        </label>
+
+                    <div className="flex gap-2">
+                        <div className="w-full">
+                            <label htmlFor="parentesco" className="block text-base font-medium leading-6 text-black">
+                            Parentesco de Encargado
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="parentesco"
+                                    name="parentesco"
+                                    type="text"
+                                    required
+                                    placeholder="Escriba su parentesco"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                            </div>
                         </div>
+                        <div className="w-full">
+                            <label htmlFor="telefonoencargado" className="block text-base font-medium leading-6 text-black">
+                            Telefono de Encargado
+                            </label>
+                            <div className="mt-2">
+                            <input
+                                id="telefonoencargado"
+                                name="telefonoencargado"
+                                type="number"
+                                autoComplete="telefonoencargado"
+                                required
+                                placeholder="Escriba su Telefono"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label htmlFor="padecimientos" className="block text-base font-medium leading-6 text-black">
+                        Padecimientos
+                        </label>
                         <div className="mt-2">
                         <input
-                            id="confirmacion"
-                            name="confirmacion"
-                            type="password"
-                            autoComplete="current-password"
+                            id="padecimientos"
+                            name="padecimientos"
+                            type="text"
                             required
-                            placeholder="Confirme su Contraseña"
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            placeholder="Escriba sus padecimientos"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                         </div>
                     </div>
-        
+
                     <div>
                         <button
                         type="submit"
