@@ -17,7 +17,7 @@ export default function Nuevopaciente() {
                     <div className="flex gap-2">
                         <div className="w-full">
                             <label htmlFor="nombre" className="block text-base font-medium leading-6 text-black">
-                            Nombre
+                            Id Usuario
                             </label>
                             <div className="mt-2">
                             <input

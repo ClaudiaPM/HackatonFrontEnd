@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 
 export default function Example() {
     return (
@@ -44,11 +45,6 @@ export default function Example() {
                       <label htmlFor="password" className="block text-base font-medium leading-6 text-white">
                         Contraseña
                       </label>
-                      <div className="text-sm">
-                        <a href="#" className="text-xs text-white hover:text-sky-200">
-                          Haz olvidado la Contraseña?
-                        </a>
-                      </div>
                     </div>
                     <div className="mt-2">
                       <input
@@ -72,7 +68,15 @@ export default function Example() {
                     </button>
                   </div>
                 </form>
-      
+
+                <div className="text-sm mt-4 text-center">
+                  <Link legacyBehavior href='/registrarse'>
+                    <a href="#" className="text-xs text-white hover:text-sky-200">
+                      No tienes una cuenta? Registrate
+                    </a>
+                  </Link>
+                </div>
+                      
               </div>
             </div>
 

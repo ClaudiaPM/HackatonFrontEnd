@@ -6,9 +6,27 @@ import SvgNuevoPaciente from "../iconComponents/SvgNuevopaciente"
 import SvgEvento from "../iconComponents/SvgEvento"
 import SvgListapaciente from "../iconComponents/SvgListapaciente"
 import SvgPerfil from "../iconComponents/SvgPerfil"
+import Modal from 'react-modal'
+import ModalIncidente from "../components/ModalIncidente"
+import useSalud from "../hooks/useSalud"
+
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+Modal.setAppElement('#__next');
 
 export default function Layout({children, pagina}) {
     const router = useRouter()
+    const {modal} = useSalud()
 
     return(
         <>
@@ -60,6 +78,15 @@ export default function Layout({children, pagina}) {
                     </div>
                 </main>
             </div>
+
+            { modal && (
+            <Modal
+                isOpen={modal}
+                style={customStyles}
+            >
+                <ModalIncidente />
+            </Modal>
+            )}
         </>
     )
 }

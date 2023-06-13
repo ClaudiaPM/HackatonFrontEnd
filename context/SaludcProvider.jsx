@@ -4,23 +4,19 @@ import axios from "axios";
 const SaludcContext = createContext();
 
 const SaludcProvider = ({children}) => {
-    const [usuarios, setUsuarios] = useState({})
+    const [modal, setModal] = useState(false)
 
-    const consultarUsuarios = async datos => {
-        try {
-            const url = ('http://167.99.145.1/api/registre/user')
-            const { data } = await axios(url)
-            setUsuarios(data.registre);
-        } catch (error) {
-            console.log(error)
-        }
+    //para Modal
+    const handleChangeModal = () => {
+        setModal(!modal)
     }
+    
 
   return (
     <SaludcContext.Provider
         value={{
-            consultarUsuarios,
-            usuarios,
+            modal,
+            handleChangeModal
         }}
     >
         {children}
