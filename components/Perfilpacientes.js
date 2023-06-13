@@ -12,7 +12,7 @@ export default function Perfilpacientes() {
         <>
             <div className="md:p-8 p-2 flex flex-col items-center sm:space-x-4 bg-white rounded-t-md">
                 <div className=" mb-6 h-20 sm:h-20 sm:w-20 sm:mb-0">
-                    <img src="https://source.unsplash.com/100x100/?portrait?1" alt="imagen paciente" className="object-cover object-center w-full h-full rounded-full bg-gray-500" />
+                    <img src="https://i.pravatar.cc/150?img=12" alt="imagen paciente" className="object-cover object-center w-full h-full rounded-full bg-gray-500" />
                 </div>
                 <div className="flex flex-col space-y-4 justify-center">
                     <div>

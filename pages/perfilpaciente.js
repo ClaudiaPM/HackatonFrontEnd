@@ -18,7 +18,7 @@ export default function Perfilpaciente() {
                         handleChangeModal()
                     }}
                 >
-                    Crear Incidente
+                    Crear Historial
                 </button>
             </div>
 

@@ -5,20 +5,15 @@ import Link from "next/link";
 
 export default function Registrarse() {
     const [formData, setFormData] = useState({
-        idtipoSangre: 0,
-        idgenero: 0,
-        padecimientos_general: '',
-        nombre: '',
-        apellido: '',
+        apellido: "",
+        nombre: "",
+        email: "",
+        password: "",
+        telefono: "",
         edad: 0,
-        email: '',
-        telefono: '',
-        url_foto: '',
-        direccion_detalle: '',
-        medico_encargado: 0,
-        observaciones: '',
-        idconsultorio: 0,
-        idmedico: 0
+        genero_id: 0,
+        municipio_id: 0,
+        direccion: ""
       });
 
       const [selectedGenero, setSelectedGenero] = useState(''); 
@@ -26,10 +21,10 @@ export default function Registrarse() {
 
         // Función para manejar cambios en el campo "género"
         const handleGeneroChange = (event) => {
-            setSelectedGenero(event.target.value);
+            setSelectedGenero(parseInt(event.target.value));
         };
 
-        // Función para manejar cambios en el campo "género"
+        // Función para manejar cambios en el campo "sangre"
         const handleSangreChange = (event) => {
             setSelectedSangre(event.target.value);
         };
@@ -47,7 +42,7 @@ export default function Registrarse() {
         event.preventDefault();
     
         try {
-          const response = await axios.post('https://api-backend.techvisionaryx.com/api/register/paciente', formData, {
+          const response = await axios.post('https://api-backend.techvisionaryx.com/api/register/user', formData, {
             headers: {
               'Content-Type': 'application/json',
             },
@@ -55,20 +50,15 @@ export default function Registrarse() {
           console.log(response.data); // Hacer algo con la respuesta de la API
           // Restablecer los valores del formulario
           setFormData({
-            idtipoSangre: 0,
-            idgenero: 0,
-            padecimientos_general: '',
-            nombre: '',
-            apellido: '',
+            apellido: "",
+            nombre: "",
+            email: "",
+            password: "",
+            telefono: "",
             edad: 0,
-            email: '',
-            telefono: '',
-            url_foto: '',
-            direccion_detalle: '',
-            medico_encargado: 0,
-            observaciones: '',
-            idconsultorio: 0,
-            idmedico: 0
+            genero_id: 0,
+            municipio_id: 0,
+            direccion: ""
           });
         } catch (error) {
           console.error(error);
@@ -130,7 +120,7 @@ export default function Registrarse() {
                                             </label>
                                             <div className="mt-2">
                                                 <input
-                                                    id="apellidos"
+                                                    id="apellido"
                                                     name="apellido" 
                                                     value={formData.apellido} 
                                                     onChange={handleChange}
@@ -183,21 +173,21 @@ export default function Registrarse() {
                                             </div>
                                         </div>
                                         <div className="w-full">
-                                            <label htmlFor="genero" className="block text-base font-medium leading-6 text-white">
+                                            <label htmlFor="genero_id" className="block text-base font-medium leading-6 text-white">
                                                 Genero
                                             </label>
                                             <div className="mt-2">
                                                 <select
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
-                                                    id="genero"
-                                                    name="genero"
+                                                    id="genero_id"
+                                                    name="genero_id"
                                                     value={selectedGenero} 
                                                     onChange={handleGeneroChange}
                                                 >
-                                                    <option value="">-- Seleccione --</option>
-                                                    <option value="masculino">Masculino</option>
-                                                    <option value="femenino">Femenino</option>
-                                                    <option value="otros">Otros</option>
+                                                    <option value={0}>-- Seleccione --</option>
+                                                    <option value={1}>Masculino</option>
+                                                    <option value={2}>Femenino</option>
+                                                    <option value={3}>Otros</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -244,7 +234,7 @@ export default function Registrarse() {
                                             <input
                                                 id="direccion"
                                                 name="direccion_detalle" 
-                                                value={formData.direccion_detalle} 
+                                                value={formData.direccion} 
                                                 onChange={handleChange}
                                                 type="text"
                                                 required
@@ -262,7 +252,7 @@ export default function Registrarse() {
                                             <div className="mt-2">
                                                 <input
                                                     id="telefono"
-                                                    type="text" 
+                                                    type="number" 
                                                     name="telefono" 
                                                     value={formData.telefono} 
                                                     onChange={handleChange} 
@@ -276,119 +266,22 @@ export default function Registrarse() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="contraseña" className="block text-base font-medium leading-6 text-white">
+                                        <label htmlFor="password" className="block text-base font-medium leading-6 text-white">
                                             Contraseña
                                         </label>
                                         <div className="mt-2">
                                             <input
-                                                id="contraseña"
-                                                name="direccion_detalle" 
-                                                value={formData.direccion_detalle} 
+                                                id="password"
+                                                name="password" 
+                                                value={formData.password} 
                                                 onChange={handleChange}
-                                                type="text"
+                                                type="password"
                                                 required
                                                 placeholder="Escriba su Direccion"
                                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             />
                                         </div>
                                     </div>
-                                        {/* asasaadsad 
-                                        <div className="w-full">
-                                            <label htmlFor="idtipoSangre" className="block text-base font-medium leading-6 text-white">
-                                                Tipo de Sangre
-                                            </label>
-                                            <div className="mt-2">
-                                                <select
-                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
-                                                    id="idtipoSangre"
-                                                    required
-                                                    type='number'
-                                                    name="idtipoSangre"
-                                                    value={formData.idtipoSangre} 
-                                                    onChange={handleChange}
-                                                >
-                                                    <option value="0">-- Seleccione --</option>
-                                                    <option value="1">-- A Positivo --</option>
-                                                    <option value="2">-- A Negativo --</option>
-                                                    <option value="3">-- B Positivo --</option>
-                                                    <option value="4">-- B Negativo --</option>
-                                                    <option value="5">-- O Positivo --</option>
-                                                    <option value="6">-- O Negativo --</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    
-
-                                    <div>
-                                        <label htmlFor="medico_encargado" className="block text-base font-medium leading-6 text-white">
-                                            Nombre Encargado
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="medico_encargado"
-                                                name="medico_encargado" 
-                                                value={formData.medico_encargado} 
-                                                onChange={handleChange}
-                                                type="number"
-                                                required
-                                                placeholder="Escriba nombre completo encargado"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-2">
-                                        <div className="w-full">
-                                            <label htmlFor="parentesco" className="block text-base font-medium leading-6 text-white">
-                                                Parentesco de Encargado
-                                            </label>
-                                            <div className="mt-2">
-                                                <input
-                                                    id="parentesco"
-                                                    name="parentesco"
-                                                    type="text"
-                                                    required
-                                                    placeholder="Escriba su parentesco"
-                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="w-full">
-                                            <label htmlFor="telefonoencargado" className="block text-base font-medium leading-6 text-white">
-                                                Telefono de Encargado
-                                            </label>
-                                            <div className="mt-2">
-                                                <input
-                                                    id="telefonoencargado"
-                                                    name="telefonoencargado"
-                                                    type="number"
-                                                    autoComplete="telefonoencargado"
-                                                    required
-                                                    placeholder="Escriba su Telefono"
-                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="padecimientos_general" className="block text-base font-medium leading-6 text-white">
-                                            Padecimientos
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="padecimientos_general"
-                                                name="padecimientos_general" 
-                                                value={formData.padecimientos_general} 
-                                                onChange={handleChange}
-                                                type="text"
-                                                required
-                                                placeholder="Escriba sus padecimientos"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-                                    */}
 
                                     <div >
                                         <button
@@ -403,11 +296,10 @@ export default function Registrarse() {
                                 <div className="text-sm mt-4 text-center">
                                     <Link legacyBehavior href='/registrarse'>
                                         <a href="#" className="text-xs text-white hover:text-sky-200">
-                                        No tienes una cuenta? Registrate
+                                            No tienes una cuenta? Registrate
                                         </a>
                                     </Link>
                                 </div>
-                                
                             </div>
                             
                         </div>
