@@ -3,14 +3,23 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import AxiosInstance from "../src/config/axios";
+import Swal from "sweetalert2";
 
-export default function Example() {
+export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // Función para manejar cambios en los campos del formulario
+  const router = useRouter();
+
+  useEffect(() => {
+    // Si el usuario ya está logueado, redireccionar al dashboard
+    if (localStorage.getItem("token")) {
+      router.push("/dashboard");
+    }
+  }, []);
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -18,7 +27,6 @@ export default function Example() {
     });
   };
 
-  // Función para enviar los datos del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -27,11 +35,10 @@ export default function Example() {
         email: formData.email,
         password: formData.password,
       };
-      console.log(data);
 
       const response = await AxiosInstance.post("auth/login", data);
       const datos = response.data;
-      console.log(response);
+      // console.log(response)
 
       localStorage.setItem("token", datos.access_token);
       localStorage.setItem("expire_in", datos.expires_in); // 3600
@@ -41,22 +48,18 @@ export default function Example() {
       } else {
         router.push("/login");
       }
-
-      // console.log(response.data)
     } catch (error) {
-      console.error(error);
+      //console.error(error);
+
+      if (error.response.status === 401) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Credenciales incorrectas",
+        });
+      }
     }
   };
-
-  const router = useRouter();
-
-  useEffect(() => {
-    // Si el usuario ya está logueado, redireccionar al dashboard
-    if (localStorage.getItem("token")) {
-      router.push("/dashboard");
-    }
-    
-  }, []);
 
   return (
     <>
@@ -101,7 +104,7 @@ export default function Example() {
                       autoComplete="email"
                       required
                       placeholder="Escriba su correo electronico"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -141,8 +144,8 @@ export default function Example() {
               </form>
 
               <div className="text-sm mt-4 text-center">
-                <Link legacyBehavior href="/registrarse">
-                  <a href="#" className="text-xs text-white hover:text-sky-200">
+                <Link href="/registrarse">
+                  <a className="text-xs text-white hover:text-sky-200">
                     No tienes una cuenta? Registrate
                   </a>
                 </Link>
