@@ -4,6 +4,7 @@ import SvgTelefono from "../iconComponents/SvgTelefono";
 import SvgDireccion from "../iconComponents/SvgDireccion";
 import SvgNombre from "../iconComponents/SvgNombre";
 import SvgParentesco from "../iconComponents/SvgParentesco";
+import SvgEdad from "../iconComponents/SvgEdad";
 import AxiosInstance from "../src/config/axios";
 import { useState, useEffect } from "react";
 
@@ -75,6 +76,12 @@ export default function Perfil() {
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
                         {datos.telefono}
                     </p>
+                    <p className="flex mt-2 gap-1 items-center font-semibold">
+                        <SvgEdad/>
+                        Edad:</p>
+                    <p className="flex md:mt-1 gap-1 items-center text-gray-700">
+                        {datos.edad}
+                    </p>
                 </div>
                 <div className="col-span-1 mt-2 md:mt-0">
                     <p className="flex gap-1 items-center font-semibold">
@@ -94,13 +101,13 @@ export default function Perfil() {
                         <SvgNombre/>
                         Nombre:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        Laura Valentina González Sánchez
+                        no definido
                     </p>
                     <p className="flex gap-1 mt-2 items-center font-semibold">
                         <SvgParentesco/>
                         Parentesco:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        Esposa
+                        NO definido
                     </p>
                 </div>
                 <div className=" col-span-1 mt-2 md:mt-0">
@@ -108,7 +115,7 @@ export default function Perfil() {
                         <SvgTelefono/>
                         Telefono:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        7000 000
+                        No definido
                     </p>
                 </div>
                 <div className="col-span-1 mt-2 md:mt-0">
@@ -116,7 +123,7 @@ export default function Perfil() {
                         <SvgDireccion/>
                         Direccion:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        San Salvador, San salvador, 
+                        No difinido 
                     </p>
                 </div>
             </div>
