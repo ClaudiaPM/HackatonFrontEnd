@@ -25,7 +25,7 @@ export default function Registrarse() {
   useEffect(() => {
     const getGeneros = () => {
       try {
-        AxiosInstance.get("/generos").then((response) => {
+        AxiosInstance.get("api/generos").then((response) => {
           //console.log(response.data.datos);
           setGeneros(response.data.datos);
         });
@@ -36,7 +36,7 @@ export default function Registrarse() {
 
     const getdepartamentos = () => {
       try {
-        AxiosInstance.get("/departamentos").then((response) => {
+        AxiosInstance.get("api/departamentos").then((response) => {
           //console.log(response.data.datos);
           setDepartamentos(response.data.datos);
         });
@@ -53,7 +53,7 @@ export default function Registrarse() {
     setSelectedDepartamento(departamentoId);
 
     try {
-      AxiosInstance.get(`/departamento/get/by/id/${departamentoId}`).then(
+      AxiosInstance.get(`api/departamento/get/by/id/${departamentoId}`).then(
         (response) => {
           // console.log(response.data.datos);
           setMunicipios(response.data.datos);
@@ -107,7 +107,7 @@ export default function Registrarse() {
       };
       console.log(data);
 
-      const response = await AxiosInstance.post("register/user", data);
+      const response = await AxiosInstance.post("api/register/user", data);
       console.log(response.data);
     } catch (error) {
       console.error(error);
