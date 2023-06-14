@@ -395,12 +395,12 @@ export default function Registrarse() {
                 </form>
 
                 <div className="text-sm mt-4 text-center">
-                  <Link legacyBehavior href="/registrarse">
+                  <Link legacyBehavior href="/login">
                     <a
                       href="#"
                       className="text-xs text-white hover:text-sky-200"
                     >
-                      No tienes una cuenta? Registrate
+                      Ya tienes una cuenta? Inicia sesión
                     </a>
                   </Link>
                 </div>

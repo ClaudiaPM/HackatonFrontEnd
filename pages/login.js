@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import AxiosInstance from "../src/config/axios";
 
@@ -29,12 +30,26 @@ export default function Example() {
       console.log(data);
 
       const response = await AxiosInstance.post("auth/login", data);
+      const datos = response.data
+      console.log(datos)
+ 
+      localStorage.setItem("token", datos.access_token);
+      localStorage.setItem('expire_in',datos.expires_in) // 3600
      console.log(response.data)
     } catch (error) {
       console.error(error);
     }
   };
 
+  const router = useRouter()
+
+  useEffect(() => {
+      const token = localStorage.getItem('token')
+      if(!token){
+        router.push('/perfil')
+      }
+  }, []);
+  
   return (
     <>
       <Head>
