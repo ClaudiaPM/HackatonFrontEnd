@@ -92,7 +92,6 @@ export default function Registrarse() {
     });
   };
 
-  const router = useRouter()
   // Función para enviar los datos del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
