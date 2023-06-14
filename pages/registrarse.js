@@ -111,6 +111,19 @@ export default function Registrarse() {
       const response = await AxiosInstance.post("api/register/user", data);
       console.log(response);
 
+      //limpiar el formulario
+      setFormData({
+        apellido: "",
+        nombre: "",
+        email: "",
+        password: "",
+        telefono: "",
+        edad: 0,
+        genero_id: 0,
+        municipio_id: 0,
+        direccion: "",
+      });
+      
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
