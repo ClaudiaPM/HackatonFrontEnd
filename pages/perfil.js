@@ -4,9 +4,67 @@ import SvgTelefono from "../iconComponents/SvgTelefono";
 import SvgDireccion from "../iconComponents/SvgDireccion";
 import SvgNombre from "../iconComponents/SvgNombre";
 import SvgParentesco from "../iconComponents/SvgParentesco";
+import AxiosInstance from "../src/config/axios";
+import { useState, useEffect } from "react";
 
 
 export default function Perfil() {
+
+    //esta data viene 
+    // {
+    //     "resultado": "OK",
+    //     "datos": {
+    //       "id": 11,
+    //       "usuario": "agfarca7",
+    //       "hash": null,
+    //       "activo": 1,
+    //       "nombre": "alexis",
+    //       "codigo": null,
+    //       "created_at": "2023-06-14T00:58:14.000000Z",
+    //       "updated_at": "2023-06-14T00:58:14.000000Z",
+    //       "tipo_sangre_id": null,
+    //       "apellido": "gfarca",
+    //       "telefono": "73455745",
+    //       "email": "test-01@test01.com",
+    //       "municipio_id": 417,
+    //       "genero_id": 2,
+    //       "direccion": "sv",
+    //       "edad": 24
+    //     },
+    //     "entregado": "2023-06-14 02:21:26 UTC"
+    //   }
+
+    const [datos, setDatos] = useState({
+        nombre: '',
+        apellido: '',
+        email: '',
+        telefono: '',
+        direccion: '',
+        edad: '',
+        genero: '',
+        municipio: '',
+        tipo_sangre: '',
+    });
+
+    const perfil = async () => {
+        try {
+            const headers = {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            };
+            const response = await AxiosInstance.get("usuario/profile", { headers });
+            const datos = response.data;
+            console.log(datos);
+            setDatos(datos.datos);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        perfil();
+    }, []);
+
+
     return(
         <Layout pagina='Mi Perfil'>
             
@@ -16,8 +74,8 @@ export default function Perfil() {
                 </div>
                 <div className="flex flex-col space-y-4 justify-center">
                     <div>
-                        <h2 className="text-2xl font-semibold">Juan Carlos Rodríguez López</h2>
-                        <p className="text-lg dark:text-gray-700 text-center">Doctor general</p>
+                        <p className="text-2xl font-semibold dark:text-gray-200 text-center">{datos.nombre} {datos.apellido}</p>
+                        {/* <p className="text-lg dark:text-gray-700 text-center">Doctor general</p> */}
                     </div>
                 </div>
                 
@@ -29,7 +87,7 @@ export default function Perfil() {
                         <SvgCorreo />
                         Correo Electronico:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        correoelectronico@correo.com
+                        {datos.email}
                     </p>
                 </div>
                 <div className=" col-span-1 mt-2 md:mt-0">
@@ -37,7 +95,7 @@ export default function Perfil() {
                         <SvgTelefono/>
                         Telefono:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        7000 000
+                        {datos.telefono}
                     </p>
                 </div>
                 <div className="col-span-1 mt-2 md:mt-0">
@@ -45,7 +103,7 @@ export default function Perfil() {
                         <SvgDireccion/>
                         Direccion:</p>
                     <p className="flex md:mt-1 gap-1 items-center text-gray-700">
-                        San Salvador, San salvador
+                        {datos.direccion}
                     </p>
                 </div>
             </div>
