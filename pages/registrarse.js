@@ -65,8 +65,13 @@ export default function Registrarse() {
   };
 
   const handleMunicipioChange = (event) => {
-    const municipioId = event.target.value;
+    const municipioId = parseInt(event.target.value);
     setSelectedMunicipio(municipioId);
+
+    setFormData({
+        ...formData,
+        municipio_id: municipioId,
+      });
   };
 
   const [selectedGenero, setSelectedGenero] = useState(0);
@@ -102,8 +107,8 @@ export default function Registrarse() {
       };
       console.log(data);
 
-      // const response = await AxiosInstance.post("register/user", data);
-      // console.log(response.data);
+      const response = await AxiosInstance.post("register/user", data);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -292,6 +297,7 @@ export default function Registrarse() {
                             <select
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
                                 id="municipio_id"
+                                name="municipio_id"
                                 required
                                 onChange={handleMunicipioChange}
                                 value={selectedMunicipio}

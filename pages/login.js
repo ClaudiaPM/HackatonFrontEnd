@@ -1,7 +1,45 @@
 import Head from "next/head"
 import Link from "next/link"
+import { useState, useEffect } from "react";
+import AxiosInstance from "../src/config/axios";
 
 export default function Example() {
+
+    const [formData, setFormData] = useState({
+      
+      email: "",
+      password: "",
+    });
+  
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+  
+    // Función para manejar cambios en los campos del formulario
+    const handleChange = (event) => {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value,
+      });
+    };
+  
+    // Función para enviar los datos del formulario
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const data = {
+          email: formData.email,
+          password: formData.password,
+        };
+        console.log(data);
+  
+        const response = await AxiosInstance.post("auth/login", data);
+        console.log(response.data.datos);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return (
       <>
         <Head>
@@ -22,7 +60,9 @@ export default function Example() {
               </div>
       
               <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6" action="#" method="POST">
+                <form className="space-y-6" action="#" method="POST"
+                  onSubmit={handleSubmit}
+                >
                   <div>
                     <label htmlFor="email" className="block text-base font-medium leading-6 text-white">
                       Correo Electronico
@@ -31,6 +71,8 @@ export default function Example() {
                       <input
                         id="email"
                         name="email"
+                        value={formData.email}
+                          onChange={handleChange}
                         type="email"
                         autoComplete="email"
                         required
@@ -50,6 +92,8 @@ export default function Example() {
                       <input
                         id="password"
                         name="password"
+                        value={formData.password}
+                          onChange={handleChange}
                         type="password"
                         autoComplete="current-password"
                         required
@@ -63,6 +107,7 @@ export default function Example() {
                     <button
                       type="submit"
                       className="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 uppercase"
+                      
                     >
                       Iniciar Sesión
                     </button>
