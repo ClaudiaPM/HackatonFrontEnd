@@ -30,17 +30,30 @@ export default function Example() {
       console.log(data);
 
       const response = await AxiosInstance.post("auth/login", data);
-      const datos = response.data
-      console.log(datos)
- 
+      const datos = response.data;
+      console.log(response);
+
       localStorage.setItem("token", datos.access_token);
-      localStorage.setItem('expire_in',datos.expires_in) // 3600
-      console.log(response.data)
+
+      // localStorage.setItem('expire_in',datos.expires_in) // 3600
+      // console.log(response.data)
+
+
+      localStorage.setItem("expire_in", datos.expires_in); // 3600
+
+      if (response.status === 200) {
+        router.push("/dashboard");
+      } else {
+        router.push("/login");
+      }
+
+      // console.log(response.data)
 
     } catch (error) {
       console.error(error);
     }
   };
+
 
   // const router = useRouter()
 
@@ -50,6 +63,17 @@ export default function Example() {
   //       router.push('/perfil')
   //     }
   // }, []);
+
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/perfil");
+    }
+  }, []);
+
 
   return (
     <>
