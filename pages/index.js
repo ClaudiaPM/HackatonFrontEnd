@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <div className="flex items-center pagina">
-          <div className="ml-20">
+          <div className="md:ml-20">
               <div>
                     <h1 className="text-8xl font-bold text-white">Salud</h1>
                     <p className="text-8xl font-bold text-yellow-400">Comunitaria</p>

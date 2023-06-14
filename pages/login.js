@@ -41,6 +41,10 @@ export default function Login() {
       // console.log(response)
 
       localStorage.setItem("token", datos.access_token);
+
+      //localStorage.setItem('expire_in',datos.expires_in) // 3600
+      // console.log(response.data)
+
       localStorage.setItem("expire_in", datos.expires_in); // 3600
 
       if (response.status === 200) {
