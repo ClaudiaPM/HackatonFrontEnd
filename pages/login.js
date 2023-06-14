@@ -51,10 +51,11 @@ export default function Example() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/perfil");
+    // Si el usuario ya está logueado, redireccionar al dashboard
+    if (localStorage.getItem("token")) {
+      router.push("/dashboard");
     }
+    
   }, []);
 
   return (

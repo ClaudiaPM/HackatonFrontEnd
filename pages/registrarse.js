@@ -24,6 +24,7 @@ export default function Registrarse() {
   const [selectedMunicipio, setSelectedMunicipio] = useState(""); // Estado para almacenar el municipio seleccionado
 
   useEffect(() => {
+
     const getGeneros = () => {
       try {
         AxiosInstance.get("api/generos").then((response) => {
@@ -123,7 +124,7 @@ export default function Registrarse() {
         municipio_id: 0,
         direccion: "",
       });
-      
+
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
