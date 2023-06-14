@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import AxiosInstance from "../src/config/axios";
+import Swal from "sweetalert2";
 
 export default function Registrarse() {
   const [formData, setFormData] = useState({
@@ -69,9 +70,9 @@ export default function Registrarse() {
     setSelectedMunicipio(municipioId);
 
     setFormData({
-        ...formData,
-        municipio_id: municipioId,
-      });
+      ...formData,
+      municipio_id: municipioId,
+    });
   };
 
   const [selectedGenero, setSelectedGenero] = useState(0);
@@ -105,10 +106,29 @@ export default function Registrarse() {
         municipio_id: formData.municipio_id,
         direccion: formData.direccion,
       };
-      console.log(data);
+      //console.log(data);
 
       const response = await AxiosInstance.post("api/register/user", data);
-      console.log(response.data);
+      console.log(response);
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Registro exitoso!",
+          text: "Ahora puedes iniciar sesión!",
+        });
+
+        // Redireccionar al login
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo salió mal!",
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -293,28 +313,23 @@ export default function Registrarse() {
                       >
                         Municipio
                       </label>
-                        <div className="mt-2">
-                            <select
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
-                                id="municipio_id"
-                                name="municipio_id"
-                                required
-                                onChange={handleMunicipioChange}
-                                value={selectedMunicipio}
-                            >
-                                <option>-- Seleccione --</option>
-                                {municipios.map((municipio) => (
-                                    <option
-
-                                        key={municipio.id}
-                                        value={municipio.id}
-                                    >
-                                        {municipio.nombre}
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div>
+                      <div className="mt-2">
+                        <select
+                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center"
+                          id="municipio_id"
+                          name="municipio_id"
+                          required
+                          onChange={handleMunicipioChange}
+                          value={selectedMunicipio}
+                        >
+                          <option>-- Seleccione --</option>
+                          {municipios.map((municipio) => (
+                            <option key={municipio.id} value={municipio.id}>
+                              {municipio.nombre}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
 
