@@ -10,30 +10,7 @@ import { useState, useEffect } from "react";
 
 export default function Perfil() {
 
-    //esta data viene 
-    // {
-    //     "resultado": "OK",
-    //     "datos": {
-    //       "id": 11,
-    //       "usuario": "agfarca7",
-    //       "hash": null,
-    //       "activo": 1,
-    //       "nombre": "alexis",
-    //       "codigo": null,
-    //       "created_at": "2023-06-14T00:58:14.000000Z",
-    //       "updated_at": "2023-06-14T00:58:14.000000Z",
-    //       "tipo_sangre_id": null,
-    //       "apellido": "gfarca",
-    //       "telefono": "73455745",
-    //       "email": "test-01@test01.com",
-    //       "municipio_id": 417,
-    //       "genero_id": 2,
-    //       "direccion": "sv",
-    //       "edad": 24
-    //     },
-    //     "entregado": "2023-06-14 02:21:26 UTC"
-    //   }
-
+    
     const [datos, setDatos] = useState({
         nombre: '',
         apellido: '',
