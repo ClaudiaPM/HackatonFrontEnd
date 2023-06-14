@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import AxiosInstance from "../src/config/axios";
@@ -89,6 +90,7 @@ export default function Registrarse() {
     });
   };
 
+  const router = useRouter()
   // Función para enviar los datos del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -112,6 +114,9 @@ export default function Registrarse() {
     } catch (error) {
       console.error(error);
     }
+
+    await router.push('/login');
+    
   };
 
   return (

@@ -6,6 +6,7 @@ import SvgNombre from "../iconComponents/SvgNombre";
 import SvgParentesco from "../iconComponents/SvgParentesco";
 
 
+
 export default function Perfil() {
     return(
         <Layout pagina='Mi Perfil'>

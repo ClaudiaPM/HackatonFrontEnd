@@ -35,21 +35,22 @@ export default function Example() {
  
       localStorage.setItem("token", datos.access_token);
       localStorage.setItem('expire_in',datos.expires_in) // 3600
-     console.log(response.data)
+      console.log(response.data)
+
     } catch (error) {
       console.error(error);
     }
   };
 
-  const router = useRouter()
+  // const router = useRouter()
 
-  useEffect(() => {
-      const token = localStorage.getItem('token')
-      if(!token){
-        router.push('/perfil')
-      }
-  }, []);
-  
+  // useEffect(() => {
+  //     const token = localStorage.getItem('token')
+  //     if(token){
+  //       router.push('/perfil')
+  //     }
+  // }, []);
+
   return (
     <>
       <Head>
