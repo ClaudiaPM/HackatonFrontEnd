@@ -10,6 +10,8 @@ export default function Example() {
     password: "",
   });
 
+  const router = useRouter()
+  
   // Función para manejar cambios en los campos del formulario
   const handleChange = (event) => {
     setFormData({
@@ -35,9 +37,8 @@ export default function Example() {
 
       localStorage.setItem("token", datos.access_token);
 
-      // localStorage.setItem('expire_in',datos.expires_in) // 3600
+      //localStorage.setItem('expire_in',datos.expires_in) // 3600
       // console.log(response.data)
-
 
       localStorage.setItem("expire_in", datos.expires_in); // 3600
 
@@ -65,14 +66,14 @@ export default function Example() {
   // }, []);
 
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/perfil");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     router.push("/perfil");
+  //   }
+  // }, []);
 
 
   return (

@@ -114,8 +114,6 @@ export default function Registrarse() {
     } catch (error) {
       console.error(error);
     }
-
-    await router.push('/login');
     
   };
 

@@ -52,7 +52,7 @@ export default function Perfil() {
                 </div>
                 <div className="flex flex-col space-y-4 justify-center">
                     <div>
-                        <p className="text-2xl font-semibold dark:text-gray-200 text-center">{datos.nombre} {datos.apellido}</p>
+                        <p className="text-2xl font-semibold text-gray-900 text-center">{datos.nombre} {datos.apellido}</p>
                         {/* <p className="text-lg dark:text-gray-700 text-center">Doctor general</p> */}
                     </div>
                 </div>
