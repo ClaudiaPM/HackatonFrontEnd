@@ -18,7 +18,7 @@ export default function Perfilpaciente() {
                         handleChangeModal()
                     }}
                 >
-                    Crear Historial
+                    Crear Registro
                 </button>
             </div>
 
