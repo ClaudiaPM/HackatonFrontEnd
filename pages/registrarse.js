@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -28,7 +28,7 @@ export default function Registrarse() {
 
     const getGeneros = () => {
       try {
-        AxiosInstance.get("api/generos").then((response) => {
+        AxiosInstance.get("api/catalogo/generos").then((response) => {
           //console.log(response.data.datos);
           setGeneros(response.data.datos);
         });
@@ -39,7 +39,7 @@ export default function Registrarse() {
 
     const getdepartamentos = () => {
       try {
-        AxiosInstance.get("api/departamentos").then((response) => {
+        AxiosInstance.get("api/catalogo/departamentos").then((response) => {
           //console.log(response.data.datos);
           setDepartamentos(response.data.datos);
         });
@@ -56,7 +56,7 @@ export default function Registrarse() {
     setSelectedDepartamento(departamentoId);
 
     try {
-      AxiosInstance.get(`api/departamento/get/by/id/${departamentoId}`).then(
+      AxiosInstance.get(`api/catalogo/departamento/get/by/id/${departamentoId}`).then(
         (response) => {
           // console.log(response.data.datos);
           setMunicipios(response.data.datos);
