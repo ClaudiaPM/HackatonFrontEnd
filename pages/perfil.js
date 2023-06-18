@@ -21,8 +21,8 @@ export default function Perfil() {
     municipio: "",
     //tipo_sangre es un objeto
     tiposangre: {
-        tipo: "",
-        id : ""
+      tipo: "",
+      id: "",
     },
     roles: [],
   });
@@ -49,13 +49,13 @@ export default function Perfil() {
 
   // Asegúrate de que datos se haya actualizado antes de acceder a datos.tipo_sangre.tipo
   const tiposangre = datos.tiposangre.tipo;
-   // console.log(tiposangre);
+  // console.log(tiposangre);
 
   return (
     <Layout pagina="Mi Perfil">
       <div className="md:p-8 p-2 bg-white rounded-t-md md:flex items-center md:justify-between">
         <div className="flex gap-3 items-center sm:space-x-6">
-          <div className=" mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
+          <div className="mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
             <img
               src="https://i.pravatar.cc/150?img=8"
               alt="image usuario"
@@ -80,37 +80,35 @@ export default function Perfil() {
         </div>
       </div>
 
-      <div className="md:grid grid-cols-3 bg-white p-8 md:pt-0 md:pb-2">
-        <div className=" col-span-1  mt-2 md:mt-0">
+      <div className="md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-white p-8 md:pt-0 md:pb-2">
+        <div className="mt-2">
           <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgCorreo />
-            Correo Electronico:
+            <SvgCorreo className="w-6 h-6 mr-2" />
+            Correo Electrónico:
           </p>
-          <p className="flex font-semibold gap-1 items-center ">
-            {datos.email}
-          </p>
+          <p className="flex font-semibold gap-1 items-center">{datos.email}</p>
         </div>
 
-        <div className=" col-span-1 mt-2 md:mt-0">
+        <div className="mt-2">
           <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgTelefono />
-            Telefono:
+            <SvgTelefono className="w-6 h-6 mr-2" />
+            Teléfono:
           </p>
           <p className="flex font-semibold gap-1 items-center">
             {datos.telefono}
           </p>
 
           <p className="mt-2 flex gap-0.5 items-center text-gray-600">
-            <SvgEdad />
+            <SvgEdad className="w-6 h-6 mr-2" />
             Edad:
           </p>
           <p className="flex font-semibold gap-1 items-center">{datos.edad}</p>
         </div>
 
-        <div className="col-span-1 mt-2 md:mt-0">
+        <div className="mt-2">
           <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgDireccion />
-            Direccion:
+            <SvgDireccion className="w-6 h-6 mr-2" />
+            Dirección:
           </p>
           <p className="flex font-semibold gap-1 items-center">
             {datos.direccion}
