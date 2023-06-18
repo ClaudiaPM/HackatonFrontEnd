@@ -43,8 +43,30 @@ export default function FormContacto() {
     setTelefono(event.target.value);
   };
 
+  const validarFormulario = () => {
+    if (
+      nombre.trim() === "" ||
+      apellido.trim() === "" ||
+      telefono.trim() === "" ||
+      selectedParentesco === 0
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!validarFormulario()) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Todos los campos son obligatorios",
+      });
+      return;
+    }
+
     try {
       const data = {
         parentesco_id: selectedParentesco,
@@ -225,7 +247,10 @@ export default function FormContacto() {
           </div>
         </form>
       </div>
-      <Table actualizarTablaCallback={actualizarTabla} />
+      <Table
+        actualizarTablaCallback={actualizarTabla}
+        setActualizarTabla={setActualizarTabla}
+      />
     </Layout>
   );
 }
