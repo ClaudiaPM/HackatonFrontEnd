@@ -71,7 +71,7 @@ export default function FormContacto() {
       fecha_inicio: fechaFormateada,
     };
 
-    // console.log(data);
+    console.log(data);
     try {
       const headers = {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
