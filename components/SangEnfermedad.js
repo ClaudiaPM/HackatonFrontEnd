@@ -31,33 +31,40 @@ export default function SangEnfermedad({ tipo_sangre }) {
           Tipo de Sangre y Enfermedades Crónicas
         </h2>
       </div>
-      <div className="md:grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 md:p-8">
+      <div className="flex flex-col items-center bg-white p-4 md:p-8">
         <div className="mt-4">
           <p className="flex items-center text-gray-600">
             <SvgSangre className="w-4 h-4 mr-1" />
             Tipo de Sangre:
           </p>
-          <p className="font-semibold">{tipo_sangre}</p>
+          <p className="font-semibold text-center">{tipo_sangre}</p>
         </div>
-        {enfermedadesPaciente.map((enfermedad, index) => (
-          <div className="mt-4" key={index}>
-            <p className="flex items-center text-gray-600">
-              <SvgEnfermedad className="w-4 h-4 mr-1" />
-              Enfermedad:
-            </p>
-            <p className="font-semibold">
-              {enfermedad.enfermedad || "No definido"}
-            </p>
+        <div className="mt-8">
+          {enfermedadesPaciente.map((enfermedad, index) => (
+            <div
+              className="mb-4 border border-gray-300 rounded p-4"
+              key={index}
+            >
+              <div className="flex flex-wrap md:flex-nowrap justify-center">
+                <p className="flex items-center space-x-2 mx-2">
+                  <SvgEnfermedad className="w-4 h-4 mr-1" />
+                  Enfermedad:
+                </p>
+                <p className="font-semibold">
+                  {enfermedad.enfermedad || "No definido"}
+                </p>
 
-            <p className="flex items-center text-gray-600">
-              <SvgNivel className="w-4 h-4 mr-1" />
-              Nivel de Gravedad:
-            </p>
-            <p className="font-semibold">
-              {enfermedad.gravedad || "No definido"}
-            </p>
-          </div>
-        ))}
+                <p className="flex items-center space-x-2 mx-2">
+                  <SvgNivel className="w-4 h-4 mr-1" />
+                  Nivel de Gravedad:
+                </p>
+                <p className="font-semibold">
+                  {enfermedad.gravedad || "No definido"}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
