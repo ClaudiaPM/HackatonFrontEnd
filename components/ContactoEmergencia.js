@@ -1,40 +1,64 @@
+import React, { useState, useEffect } from "react";
 import SvgNombre from "../iconComponents/SvgNombre";
 import SvgParentesco from "../iconComponents/SvgParentesco";
 import SvgTelefono from "../iconComponents/SvgTelefono";
+import AxiosInstance from "../src/config/axios";
 
 export default function ContactoEmergencia() {
+  const [parentescoPaciente, setParentescoPaciente] = useState([]);
 
-    return(
-        <>
-            <div className="bg-white p-0 md:p-3">
-                <h2 className="text-lg text-center font-semibold mt-0">Contacto de Emergencia</h2>
+  useEffect(() => {
+    const getParentesco = async () => {
+      const headers = {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      };
+      const response = await AxiosInstance.get(
+        "/api/paciente/obtener/parientes",
+        { headers: headers }
+      );
+      setParentescoPaciente(response.data.datos);
+    };
+
+    getParentesco();
+  }, []);
+
+  return (
+    <div>
+      <div className="bg-white p-0 md:p-3">
+        <h2 className="text-lg text-center font-semibold mt-0">
+          Contacto de Emergencia
+        </h2>
+      </div>
+      <div className="bg-white p-8 md:pt-0">
+        {parentescoPaciente.map((pariente, index) => (
+          <div key={index} className="mb-4 border border-gray-300 rounded p-4">
+            <div className="flex">
+              <div className="mx-12">
+                <SvgNombre />
+                <p className="text-gray-600">Nombre:</p>
+                <p className="font-semibold">
+                  {pariente.nombre + " " + pariente.apellido || "No definido"}
+                </p>
+              </div>
+
+              <div className="mx-12">
+                <SvgParentesco />
+                <p className="text-gray-600">Parentesco:</p>
+                <p className="font-semibold">
+                  {pariente.parentesco || "No definido"}
+                </p>
+              </div>
+              <div className="mx-12">
+                <SvgTelefono />
+                <p className="text-gray-600">Teléfono:</p>
+                <p className="font-semibold">
+                  {pariente.telefono || "No definido"}
+                </p>
+              </div>
             </div>
-            <div className="md:grid grid-cols-3 bg-white p-8 md:pt-0">
-                <div className=" col-span-1  mt-2 md:mt-0">
-                    <p className="flex gap-0.5 items-center text-gray-600">
-                        <SvgNombre/>
-                        Nombre:</p>
-                    <p className="flex font-semibold gap-1 items-center">
-                        No definido
-                    </p>
-                </div>
-                <div className=" col-span-1 mt-2 md:mt-0">
-                    <p className="flex gap-0.5 items-center text-gray-600">
-                        <SvgParentesco/>
-                        Parentesco:</p>
-                    <p className="flex font-semibold gap-1 items-center">
-                        No definido
-                    </p>
-                </div>
-                <div className=" col-span-1 mt-2 md:mt-0">
-                    <p className="flex gap-0.5 items-center text-gray-600">
-                        <SvgTelefono/>
-                        Telefono:</p>
-                    <p className="flex font-semibold gap-1 items-center">
-                        No definido
-                    </p>
-                </div>
-            </div>   
-        </>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
