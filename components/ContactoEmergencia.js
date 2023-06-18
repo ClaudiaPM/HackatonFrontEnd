@@ -24,43 +24,37 @@ export default function ContactoEmergencia() {
 
   return (
     <div>
-      <div className="bg-white p-4 md:p-8">
+      <div className="bg-white p-0 md:p-3">
         <h2 className="text-lg text-center font-semibold mt-0">
           Contacto de Emergencia
         </h2>
       </div>
-      <div className="bg-white p-4 md:p-8">
+      <div className="bg-white p-8 md:pt-0">
         {parentescoPaciente.map((pariente, index) => (
           <div key={index} className="mb-4 border border-gray-300 rounded p-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex items-center">
-                <SvgNombre className="w-6 h-6 mr-2 text-gray-600" />
-                <div>
-                  <p className="text-gray-600">Nombre:</p>
-                  <p className="font-semibold">
-                    {pariente.nombre + " " + pariente.apellido || "No definido"}
-                  </p>
-                </div>
+            <div className="flex flex-wrap md:flex-nowrap justify-center">
+              <div className="flex items-center space-x-2 mx-2">
+                <SvgNombre />
+                <p className="text-gray-600">Nombre:</p>
+                <p className="font-semibold">
+                  {pariente.nombre + " " + pariente.apellido || "No definido"}
+                </p>
               </div>
 
-              <div className="flex items-center">
-                <SvgParentesco className="w-6 h-6 mr-2 text-gray-600" />
-                <div>
-                  <p className="text-gray-600">Parentesco:</p>
-                  <p className="font-semibold">
-                    {pariente.parentesco || "No definido"}
-                  </p>
-                </div>
+              <div className="flex items-center space-x-2 mx-2">
+                <SvgParentesco />
+                <p className="text-gray-600">Parentesco:</p>
+                <p className="font-semibold">
+                  {pariente.parentesco || "No definido"}
+                </p>
               </div>
 
-              <div className="flex items-center">
-                <SvgTelefono className="w-6 h-6 mr-2 text-gray-600" />
-                <div>
-                  <p className="text-gray-600">Teléfono:</p>
-                  <p className="font-semibold">
-                    {pariente.telefono || "No definido"}
-                  </p>
-                </div>
+              <div className="flex items-center space-x-2 mx-2">
+                <SvgTelefono />
+                <p className="text-gray-600">Teléfono:</p>
+                <p className="font-semibold">
+                  {pariente.telefono || "No definido"}
+                </p>
               </div>
             </div>
           </div>
