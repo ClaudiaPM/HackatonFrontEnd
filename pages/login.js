@@ -47,6 +47,12 @@ export default function Login() {
 
       localStorage.setItem("expire_in", datos.expires_in); // 3600
 
+      //calcular la hora que se logueo y sumarle el tiempo de expiracion
+      const expireDate = new Date().getTime() + datos.expires_in * 1000;
+      const formattedDate = new Date(expireDate).toLocaleString();
+      
+      localStorage.setItem("expire_date", formattedDate);
+      
       if (response.status === 200) {
         router.push("/dashboard");
       } else {
