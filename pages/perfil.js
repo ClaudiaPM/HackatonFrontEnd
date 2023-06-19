@@ -1,55 +1,15 @@
 import Layout from "../layout/Layout";
 import Link from "next/link";
-import SvgCorreo from "../iconComponents/SvgCorreo";
-import SvgTelefono from "../iconComponents/SvgTelefono";
-import SvgDireccion from "../iconComponents/SvgDireccion";
-import SvgEdad from "../iconComponents/SvgEdad";
+
 import ContactoEmergencia from "../components/ContactoEmergencia";
-import AxiosInstance from "../src/config/axios";
 import { useState, useEffect } from "react";
 import SangEnfermedad from "../components/SangEnfermedad";
+import useSalud from "../hooks/useSalud";
+import DatosPerfil from "../components/DatosPerfil";
 
 export default function Perfil() {
-  const [datos, setDatos] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-    telefono: "",
-    direccion: "",
-    edad: "",
-    genero: "",
-    municipio: "",
-    //tipo_sangre es un objeto
-    tiposangre: {
-      tipo: "",
-      id: "",
-    },
-    roles: [],
-  });
-
-  //const [tiposangre, setTiposangre] = useState("");
-
-  const perfil = async () => {
-    try {
-      const headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      };
-      const response = await AxiosInstance.get("usuario/profile", { headers });
-      const datos = response.data;
-      console.log(datos.datos);
-      setDatos(datos.datos);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    perfil(); // Llama a la función perfil para obtener los datos del perfil
-  }, []);
-
-  // Asegúrate de que datos se haya actualizado antes de acceder a datos.tipo_sangre.tipo
-  const tiposangre = datos.tiposangre.tipo;
-  // console.log(tiposangre);
+    const { datos } = useSalud()
+    const {nombre, apellido} = datos
 
   return (
     <Layout pagina="Mi Perfil">
@@ -65,7 +25,7 @@ export default function Perfil() {
           <div className="flex flex-col space-y-4 justify-center">
             <div>
               <p className="text-2xl font-semibold text-gray-900">
-                {datos.nombre} {datos.apellido}
+                {nombre} {apellido}
               </p>
               <p className="text-lg dark:text-gray-700">Doctor general</p>
             </div>
@@ -81,43 +41,13 @@ export default function Perfil() {
       </div>
 
       <div className="md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-white p-8 md:pt-0 md:pb-2">
-        <div className="mt-2">
-          <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgCorreo className="w-6 h-6 mr-2" />
-            Correo Electrónico:
-          </p>
-          <p className="flex font-semibold gap-1 items-center">{datos.email}</p>
-        </div>
-
-        <div className="mt-2">
-          <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgTelefono className="w-6 h-6 mr-2" />
-            Teléfono:
-          </p>
-          <p className="flex font-semibold gap-1 items-center">
-            {datos.telefono}
-          </p>
-
-          <p className="mt-2 flex gap-0.5 items-center text-gray-600">
-            <SvgEdad className="w-6 h-6 mr-2" />
-            Edad:
-          </p>
-          <p className="flex font-semibold gap-1 items-center">{datos.edad}</p>
-        </div>
-
-        <div className="mt-2">
-          <p className="flex gap-0.5 items-center text-gray-600">
-            <SvgDireccion className="w-6 h-6 mr-2" />
-            Dirección:
-          </p>
-          <p className="flex font-semibold gap-1 items-center">
-            {datos.direccion}
-          </p>
-        </div>
+        <DatosPerfil/>
       </div>
 
       <ContactoEmergencia />
-      <SangEnfermedad tipo_sangre={tiposangre} />
+        <SangEnfermedad 
+            // tipo_sangre={tiposangre}
+        />
     </Layout>
   );
 }

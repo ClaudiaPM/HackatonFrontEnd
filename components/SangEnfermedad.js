@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 import SvgNivel from "../iconComponents/SvgNivel";
 import SvgSangre from "../iconComponents/SvgSangre";
 import SvgEnfermedad from "../iconComponents/SvgEnfermedad";
+//usando el useContext 
+import useSalud from "../hooks/useSalud";
 
 export default function SangEnfermedad({ tipo_sangre }) {
+    //Llamando los datos y la variable que se desea usar dentro de los datos
+    const { tiposangreTipo } = useSalud()
+    const { tipo } = tiposangreTipo
+
+    // const selectTiposangre = tiposangre.length > 0 ? tiposangre[1].value : "No definido"
+
   console.log(tipo_sangre);
   const [enfermedadesPaciente, setEnfermedadesPaciente] = useState([]);
 
@@ -37,7 +45,7 @@ export default function SangEnfermedad({ tipo_sangre }) {
             <SvgSangre className="w-4 h-4 mr-1" />
             Tipo de Sangre:
           </p>
-          <p className="font-semibold text-center">{tipo_sangre}</p>
+          <p className="font-semibold text-center">{tipo}</p>
         </div>
         <div className="mt-8">
           {enfermedadesPaciente.map((enfermedad, index) => (

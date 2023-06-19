@@ -5,10 +5,13 @@ import Link from "next/link";
 import Swal from "sweetalert2";
 import AxiosInstance from "../src/config/axios";
 import { useRouter } from "next/router";
-
+import useSalud from "../hooks/useSalud";
 
 
 export default function FormContacto() {
+
+  const { perfil } = useSalud()
+
   const customPercentage = 30;
   const [tiposangre, setTiposangre] = useState([]);
   const [selectedTipoSangre, setSelectedTipoSangre] = useState(0);
@@ -50,7 +53,8 @@ export default function FormContacto() {
           title: "Tipo de Sangre agregado correctamente",
           showConfirmButton: false,
           timer: 1500,
-        });
+        },
+        perfil());
 
         document.getElementById("submit").disabled = true;
         router.push("/FormContact");

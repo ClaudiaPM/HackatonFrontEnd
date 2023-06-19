@@ -5,7 +5,12 @@ import { useState, useEffect } from "react";
 import AxiosInstance from "../src/config/axios";
 import Swal from "sweetalert2";
 
+import useSalud from "../hooks/useSalud";
+
 export default function Login() {
+
+  const { perfil } = useSalud()
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -55,9 +60,12 @@ export default function Login() {
       
       if (response.status === 200) {
         router.push("/dashboard");
+        perfil();
       } else {
         router.push("/login");
       }
+      
+
     } catch (error) {
       //console.error(error);
 
