@@ -11,6 +11,7 @@ import SvgListapaciente from '../iconComponents/SvgListapaciente';
 import SvgPerfil from '../iconComponents/SvgPerfil';
 import SvgSignoff from '../iconComponents/SvgSignoff';
 import useSalud from '../hooks/useSalud';
+import SvgDashboard from '../iconComponents/SvgDashboard';
 
 const customStyles = {
   content: {
@@ -58,6 +59,16 @@ const Layout = ({ children, pagina }) => {
                 />
               </div>
               <nav className="mt-10">
+                <Link legacyBehavior href="/dashboard">
+                  <a
+                    className={`mt-4 py-3 px-3 rounded text-white flex gap-2 bg-black bg-opacity-10 hover:bg-black hover:bg-opacity-20 ${
+                      router.pathname === '/dashboard' && 'bg-opacity-30'
+                    }`}
+                  >
+                    <SvgDashboard />
+                    Dashboard
+                  </a>
+                </Link>
                 <Link legacyBehavior href="/perfil">
                   <a
                     className={`mt-4 py-3 px-3 rounded text-white flex gap-2 bg-black bg-opacity-10 hover:bg-black hover:bg-opacity-20 ${
