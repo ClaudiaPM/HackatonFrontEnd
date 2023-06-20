@@ -9,7 +9,7 @@ import useSalud from "../hooks/useSalud";
 export default function SangEnfermedad({ tipo_sangre }) {
     //Llamando los datos y la variable que se desea usar dentro de los datos
     const { tiposangreTipo } = useSalud()
-    const { tipo } = tiposangreTipo
+    //const { tipo } = tiposangreTipo
 
     // const selectTiposangre = tiposangre.length > 0 ? tiposangre[1].value : "No definido"
 
@@ -45,7 +45,7 @@ export default function SangEnfermedad({ tipo_sangre }) {
             <SvgSangre className="w-4 h-4 mr-1" />
             Tipo de Sangre:
           </p>
-          <p className="font-semibold text-center">{tipo}</p>
+          <p className="font-semibold text-center">{ tiposangreTipo === null ? 'No definido' : tiposangreTipo.tipo }</p>
         </div>
         <div className="mt-8">
           {enfermedadesPaciente.map((enfermedad, index) => (
