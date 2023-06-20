@@ -34,6 +34,15 @@ export default function Home() {
                       </a>
                   </Link>
               </div>
+              <div className="mt-5">
+                <Link legacyBehavior href='/about'>
+                      <a 
+                        className=" hover:text-sky-300 text-white mt-5 md:mt-0 py-1 px-1 font-bold rounded-md"
+                      >
+                          About
+                      </a>
+                  </Link>
+              </div>
           </div>
       </div>
     </>

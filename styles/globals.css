@@ -16,3 +16,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.pagina2 {
+  background-color: #ebebeb;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
